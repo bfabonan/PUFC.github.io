@@ -89,6 +89,21 @@ ul {
     color: #d4af37;
 }
 
+/* Mobile nav menu - hidden on desktop */
+.nav-links-mobile {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Hide desktop nav and show toggle on mobile */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none !important;
+    }
+}
+
 /* Hero Section */
 .hero-section {
     position: relative;
@@ -959,14 +974,6 @@ ul {
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Mobile nav menu - hidden on desktop */
-.nav-links-mobile {
-    display: none;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
 /* Responsive */
 @media (max-width: 768px) {
     .container {
@@ -985,10 +992,6 @@ ul {
 
     .nav-container {
         padding: 0 1rem;
-    }
-
-    .nav-links {
-        display: none !important;
     }
 
     .nav-links-mobile {
