@@ -204,25 +204,69 @@ document.addEventListener('keydown', (e) => {
 loadGallery();
 
 // =====================
-// FORM SUBMISSION
+// COACHES MODAL
 // =====================
-const form = document.getElementById('contact-form');
-const formSuccess = document.getElementById('form-success');
+const coachesCard = document.getElementById('coaches-card');
+const coachesModal = document.getElementById('coaches-modal');
+const coachesModalClose = document.getElementById('coaches-modal-close');
+const coachesGrid = document.getElementById('coaches-grid');
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
+const defaultCoaches = [
+    { name: 'Coach Name 1', role: 'Head Coach', photo: 'images/coaches/coach-01.jpg', bio: 'Add a short introduction about this coach here.' },
+    { name: 'Coach Name 2', role: 'Assistant Coach', photo: 'images/coaches/coach-02.jpg', bio: 'Add a short introduction about this coach here.' },
+    { name: 'Coach Name 3', role: 'Goalkeeper Coach', photo: 'images/coaches/coach-03.jpg', bio: 'Add a short introduction about this coach here.' },
+    { name: 'Coach Name 4', role: 'Fitness Coach', photo: 'images/coaches/coach-04.jpg', bio: 'Add a short introduction about this coach here.' }
+];
 
-    const btn = form.querySelector('.submit-btn');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
+async function loadCoaches() {
+    let coaches;
+    try {
+        const response = await fetch('data/coaches.json');
+        coaches = await response.json();
+    } catch (e) {
+        coaches = defaultCoaches;
+    }
+    renderCoaches(coaches);
+}
 
-    setTimeout(() => {
-        form.classList.add('hidden');
-        formSuccess.classList.remove('hidden');
-    }, 1000);
+function renderCoaches(coaches) {
+    coachesGrid.innerHTML = '';
+    coaches.forEach(coach => {
+        const card = document.createElement('div');
+        card.className = 'coach-card';
+        card.innerHTML = `
+            <img src="${coach.photo}" alt="${coach.name}" class="coach-photo" onerror="this.src='images/coaches.svg'">
+            <div class="coach-info">
+                <h3>${coach.name}</h3>
+                <p class="coach-role">${coach.role}</p>
+                <p class="coach-bio">${coach.bio}</p>
+            </div>
+        `;
+        coachesGrid.appendChild(card);
+    });
+}
+
+coachesCard.addEventListener('click', () => {
+    loadCoaches();
+    coachesModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
 });
 
-// Smooth scroll for nav links
+coachesModalClose.addEventListener('click', () => {
+    coachesModal.classList.remove('active');
+    document.body.style.overflow = '';
+});
+
+coachesModal.addEventListener('click', (e) => {
+    if (e.target === coachesModal) {
+        coachesModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+
+// =====================
+// SMOOTH SCROLL
+// =====================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();

@@ -351,7 +351,7 @@ ul {
 
 .about-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     margin-bottom: 4rem;
 }
@@ -369,6 +369,167 @@ ul {
 .about-card:hover {
     transform: translateY(-8px);
     border-color: rgba(192, 132, 252, 0.6);
+}
+
+.about-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.card-link-hint {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: #00d2be;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.about-card-link:hover .card-link-hint {
+    opacity: 1;
+}
+
+.about-card-clickable {
+    cursor: pointer;
+}
+
+.about-card-clickable:hover .card-link-hint {
+    opacity: 1;
+}
+
+/* Coaches Modal */
+.coaches-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.coaches-modal.active {
+    display: flex;
+}
+
+.coaches-modal-content {
+    background: linear-gradient(180deg, #1a0e35 0%, #110820 100%);
+    border: 1px solid rgba(192, 132, 252, 0.2);
+    border-radius: 12px;
+    padding: 2.5rem;
+    max-width: 900px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.coaches-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.coaches-modal-close:hover {
+    color: #c084fc;
+}
+
+.coaches-modal-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #d4af37;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.coaches-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.coach-card {
+    background: rgba(36, 18, 64, 0.5);
+    border: 1px solid rgba(192, 132, 252, 0.15);
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.5rem;
+    text-align: left;
+    transition: border-color 0.3s ease;
+}
+
+.coach-card:hover {
+    border-color: rgba(192, 132, 252, 0.4);
+}
+
+.coach-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 3px solid rgba(192, 132, 252, 0.3);
+}
+
+.coach-info {
+    flex: 1;
+}
+
+.coach-card h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-bottom: 0.3rem;
+}
+
+.coach-role {
+    font-size: 0.8rem;
+    color: #c084fc;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.8rem;
+}
+
+.coach-bio {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: #b0b0b0;
+}
+
+@media (max-width: 768px) {
+    .coaches-modal {
+        padding: 1rem;
+    }
+
+    .coaches-modal-content {
+        padding: 1.5rem;
+    }
+
+    .coaches-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .coach-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
 }
 
 .about-image {
@@ -884,86 +1045,70 @@ ul {
     margin-right: auto;
 }
 
-.form-container {
-    max-width: 550px;
+.contact-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 900px;
     margin: 0 auto;
 }
 
-.contact-form {
+.contact-card {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 1rem 1.5rem;
-    background: rgba(36, 18, 64, 0.6);
-    border: 1px solid rgba(192, 132, 252, 0.3);
-    border-radius: 4px;
-    color: #ffffff;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: #c084fc;
-    box-shadow: 0 0 15px rgba(192, 132, 252, 0.2);
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-    color: #666;
-}
-
-.form-group textarea {
-    resize: vertical;
-    min-height: 100px;
-}
-
-.submit-btn {
-    padding: 1.1rem 2rem;
-    background: linear-gradient(135deg, #c084fc 0%, #9333ea 100%);
-    border: none;
-    border-radius: 4px;
-    color: #ffffff;
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    cursor: pointer;
+    align-items: center;
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    background: rgba(36, 18, 64, 0.5);
+    border: 1px solid rgba(192, 132, 252, 0.2);
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
     transition: all 0.3s ease;
 }
 
-.submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(192, 132, 252, 0.4);
+.contact-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(192, 132, 252, 0.5);
+    box-shadow: 0 12px 30px rgba(192, 132, 252, 0.12);
 }
 
-.submit-btn:active {
-    transform: translateY(0);
-}
-
-.form-success {
-    text-align: center;
-    padding: 2rem;
+.contact-card-icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.2rem;
     background: rgba(192, 132, 252, 0.1);
-    border: 1px solid rgba(192, 132, 252, 0.4);
-    border-radius: 4px;
-}
-
-.form-success p {
-    font-size: 1.2rem;
     color: #c084fc;
+    border: 1px solid rgba(192, 132, 252, 0.3);
+    transition: transform 0.3s ease;
 }
 
-.hidden {
-    display: none;
+.contact-card:hover .contact-card-icon {
+    transform: scale(1.1);
+}
+
+.messenger-icon {
+    background: rgba(0, 132, 255, 0.1);
+    color: #0084ff;
+    border-color: rgba(0, 132, 255, 0.3);
+}
+
+.contact-card h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.contact-card p {
+    font-size: 0.85rem;
+    color: #b0b0b0;
+    word-break: break-word;
 }
 
 /* Lightbox */
@@ -1250,15 +1395,9 @@ ul {
         font-size: 0.95rem;
     }
 
-    .form-group input,
-    .form-group textarea {
-        padding: 0.9rem 1.2rem;
-        font-size: 0.95rem;
-    }
-
-    .submit-btn {
-        padding: 1rem;
-        font-size: 1rem;
+    .contact-cards {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
     }
 
     /* Footer */

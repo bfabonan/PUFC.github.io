@@ -37,7 +37,7 @@
                 <img src="images/logo.png" alt="PUFC Logo" class="club-logo">
             </div>
             <h1 class="hero-title animate-on-scroll">Prestige Union<br>Football Club</h1>
-            <p class="hero-subtitle animate-on-scroll">Excellence. Unity. Prestige.</p>
+            <p class="hero-subtitle animate-on-scroll">Respect. Play + Share</p>
             <a href="#about" class="hero-btn animate-on-scroll">Discover More</a>
         </div>
         <div class="scroll-indicator">
@@ -50,11 +50,12 @@
         <div class="container">
             <h2 class="section-title animate-on-scroll">About The Club</h2>
             <div class="about-grid">
-                <div class="about-card animate-on-scroll">
+                <a href="https://www.google.com/maps/place/Holy+Rosary+Minor+Seminary/@13.6278984,123.1860999,19.25z/data=!4m6!3m5!1s0x33a18cb499d5da21:0x28cc38dd320a8932!8m2!3d13.6281231!4d123.1862808!16s%2Fm%2F010r8s_5?entry=ttu" target="_blank" rel="noopener noreferrer" class="about-card animate-on-scroll about-card-link">
                     <img src="images/stadium.svg" alt="Our Stadium" class="about-image">
                     <h3>Our Home</h3>
                     <p>Prestige Park is where legends are made. Our state-of-the-art stadium holds 40,000 passionate fans who create an atmosphere unlike any other on matchday.</p>
-                </div>
+                    <span class="card-link-hint">📍 View on Google Maps</span>
+                </a>
                 <div class="about-card animate-on-scroll">
                     <img src="images/trophy.svg" alt="Our History" class="about-image">
                     <h3>Our History</h3>
@@ -64,6 +65,12 @@
                     <img src="images/team.svg" alt="Our Team" class="about-image">
                     <h3>Our Squad</h3>
                     <p>A blend of experienced veterans and exciting young talent, our squad embodies the spirit of Prestige Union — relentless, skillful, and united in pursuit of glory.</p>
+                </div>
+                <div class="about-card animate-on-scroll about-card-clickable" id="coaches-card">
+                    <img src="images/coaches.svg" alt="Our Coaches" class="about-image">
+                    <h3>Know Your Coaches</h3>
+                    <p>Meet the minds behind the team. Our coaches bring passion, experience, and tactical brilliance to every session.</p>
+                    <span class="card-link-hint">👆 Tap to meet the coaches</span>
                 </div>
             </div>
             <div class="about-text animate-on-scroll">
@@ -87,7 +94,7 @@
             <!-- Gallery grid -->
             <div class="gallery-grid animate-on-scroll" id="gallery-grid">
                 <!-- Images loaded dynamically by JS -->
-            </div>ring us for the first time, you're part of the PUFC family.
+            </div>
         </div>
     </section>
 
@@ -175,30 +182,59 @@
         </div>
     </section>
 
-    <!-- Section 6: Contact / Email Form -->
+    <!-- Section 6: Contact -->
     <section id="contact" class="contact-section">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Join The Family</h2>
-            <p class="contact-subtitle animate-on-scroll">Stay updated with the latest news, match results, and exclusive offers from PUFC.</p>
-            <div class="form-container animate-on-scroll">
-                <form id="contact-form" class="contact-form">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <h2 class="section-title animate-on-scroll">Get In Touch</h2>
+            <p class="contact-subtitle animate-on-scroll">Reach out to us through any of these channels.</p>
+            
+            <div class="contact-cards animate-on-scroll">
+                <!-- Email -->
+                <a href="mailto:prestigeunionfc2012@gmail.com" class="contact-card">
+                    <div class="contact-card-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+                            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
                     </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    <h3>Email</h3>
+                    <p>prestigeunionfc2012@gmail.com</p>
+                </a>
+
+                <!-- Phone -->
+                <a href="tel:09985847212" class="contact-card">
+                    <div class="contact-card-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
                     </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" placeholder="Your Message (optional)" rows="4"></textarea>
+                    <h3>Contact Number</h3>
+                    <p>0998 584 7212</p>
+                </a>
+
+                <!-- Messenger -->
+                <a href="https://m.me/PrestigeUnionFc" target="_blank" rel="noopener noreferrer" class="contact-card">
+                    <div class="contact-card-icon messenger-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+                            <path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.2 5.42 3.15 7.2.16.15.26.36.27.58l.05 1.81c.02.56.6.92 1.1.67l2.02-.89c.17-.08.36-.1.55-.06.86.24 1.78.36 2.74.36 5.64 0 10-4.13 10-9.7C22 6.13 17.64 2 12 2zm5.89 7.55l-2.9 4.6c-.46.73-1.44.92-2.13.41l-2.3-1.73c-.22-.16-.52-.16-.73 0l-3.11 2.36c-.41.31-.95-.18-.68-.62l2.9-4.6c.46-.73 1.44-.92 2.13-.41l2.3 1.73c.22.16.52.16.73 0l3.11-2.36c.41-.31.95.18.68.62z"/>
+                        </svg>
                     </div>
-                    <button type="submit" class="submit-btn">Subscribe & Connect</button>
-                </form>
-                <div id="form-success" class="form-success hidden">
-                    <p>✓ Thank you for joining the PUFC family!</p>
-                </div>
+                    <h3>Messenger</h3>
+                    <p>Message us on Facebook</p>
+                </a>
             </div>
         </div>
     </section>
+
+    <!-- Coaches Modal -->
+    <div class="coaches-modal" id="coaches-modal">
+        <div class="coaches-modal-content">
+            <button class="coaches-modal-close" id="coaches-modal-close">&times;</button>
+            <h2 class="coaches-modal-title">Know Your Coaches</h2>
+            <div class="coaches-grid" id="coaches-grid">
+                <!-- Coaches loaded dynamically -->
+            </div>
+        </div>
+    </div>
 
     <!-- Lightbox Modal -->
     <div class="lightbox" id="lightbox">
