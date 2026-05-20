@@ -105,12 +105,14 @@ function renderAlbumPhotos(albumIndex) {
 
     for (let i = 1; i <= album.count; i++) {
         const num = String(i).padStart(2, '0');
+        const ext = album.format || 'svg';
         const item = document.createElement('div');
         item.className = 'gallery-item';
         item.style.animationDelay = `${(i - 1) * 0.05}s`;
+        item.style.cursor = 'pointer';
 
         const img = document.createElement('img');
-        img.src = `gallery/${album.folder}/photo-${num}.svg`;
+        img.src = `gallery/${album.folder}/photo-${num}.${ext}`;
         img.alt = `${album.title} - Photo ${i}`;
         img.loading = 'lazy';
 
@@ -121,6 +123,11 @@ function renderAlbumPhotos(albumIndex) {
         item.appendChild(img);
         item.appendChild(overlay);
         galleryGrid.appendChild(item);
+
+        // Click to open lightbox
+        item.addEventListener('click', () => {
+            openLightbox(albumIndex, i - 1);
+        });
     }
 
     // Trigger entrance animation
@@ -128,6 +135,70 @@ function renderAlbumPhotos(albumIndex) {
         galleryGrid.classList.remove('loading');
     });
 }
+
+// =====================
+// LIGHTBOX
+// =====================
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxCaption = document.getElementById('lightbox-caption');
+const lightboxClose = document.getElementById('lightbox-close');
+const lightboxPrev = document.getElementById('lightbox-prev');
+const lightboxNext = document.getElementById('lightbox-next');
+
+let currentPhotoIndex = 0;
+let currentAlbumIndex = 0;
+
+function openLightbox(albumIdx, photoIdx) {
+    currentAlbumIndex = albumIdx;
+    currentPhotoIndex = photoIdx;
+    updateLightboxImage();
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function updateLightboxImage() {
+    const album = albums[currentAlbumIndex];
+    const num = String(currentPhotoIndex + 1).padStart(2, '0');
+    const ext = album.format || 'svg';
+    lightboxImg.src = `gallery/${album.folder}/photo-${num}.${ext}`;
+    lightboxImg.alt = `${album.title} - Photo ${currentPhotoIndex + 1}`;
+    lightboxCaption.textContent = `${album.title} — Photo ${currentPhotoIndex + 1} of ${album.count}`;
+}
+
+function nextPhoto() {
+    const album = albums[currentAlbumIndex];
+    currentPhotoIndex = (currentPhotoIndex + 1) % album.count;
+    updateLightboxImage();
+}
+
+function prevPhoto() {
+    const album = albums[currentAlbumIndex];
+    currentPhotoIndex = (currentPhotoIndex - 1 + album.count) % album.count;
+    updateLightboxImage();
+}
+
+lightboxClose.addEventListener('click', closeLightbox);
+lightboxNext.addEventListener('click', nextPhoto);
+lightboxPrev.addEventListener('click', prevPhoto);
+
+// Close on background click
+lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+});
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') nextPhoto();
+    if (e.key === 'ArrowLeft') prevPhoto();
+});
 
 // Initialize gallery
 loadGallery();
