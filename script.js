@@ -16,6 +16,7 @@ const navLinks = document.getElementById('nav-links');
 navToggle.addEventListener('click', () => {
     navToggle.classList.toggle('active');
     navLinks.classList.toggle('open');
+    document.body.classList.toggle('nav-open');
 });
 
 // Close mobile nav when a link is clicked
@@ -23,7 +24,19 @@ navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
         navToggle.classList.remove('active');
         navLinks.classList.remove('open');
+        document.body.classList.remove('nav-open');
     });
+});
+
+// Close mobile nav when clicking outside
+document.addEventListener('click', (e) => {
+    if (navLinks.classList.contains('open') && 
+        !navLinks.contains(e.target) && 
+        !navToggle.contains(e.target)) {
+        navToggle.classList.remove('active');
+        navLinks.classList.remove('open');
+        document.body.classList.remove('nav-open');
+    }
 });
 
 // Scroll animations using Intersection Observer
