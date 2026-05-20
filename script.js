@@ -78,8 +78,7 @@ async function loadGallery() {
             { folder: 'preseason-training-2025', title: 'Preseason Training 2025', count: 10 },
             { folder: 'cup-derby-2024', title: 'Cup Derby 2024', count: 10 },
             { folder: 'community-day-2025', title: 'Community Day 2025', count: 10 },
-            { folder: 'away-day-triumph-2024', title: 'Away Day Triumph 2024', count: 10 },
-            { folder: 'benson-fabonan-sample-album', title: 'Benson Fabonan', count: 5 }
+            { folder: 'away-day-triumph-2024', title: 'Away Day Triumph 2024', count: 10 }
         ];
         renderAlbumTabs();
         renderAlbumPhotos(0);
