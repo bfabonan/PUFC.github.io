@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 360">
+  <defs>
+    <linearGradient id="shieldBody" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d7a8f"/>
+      <stop offset="50%" style="stop-color:#1f5f75"/>
+      <stop offset="100%" style="stop-color:#1a4e65"/>
+    </linearGradient>
+    <linearGradient id="greenBanner" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#6abf45"/>
+      <stop offset="100%" style="stop-color:#4a9e30"/>
+    </linearGradient>
+    <linearGradient id="greenRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#5ab838"/>
+      <stop offset="100%" style="stop-color:#3d9525"/>
+    </linearGradient>
+    <linearGradient id="orangeFill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f5c030"/>
+      <stop offset="50%" style="stop-color:#e8a015"/>
+      <stop offset="100%" style="stop-color:#c88a10"/>
+    </linearGradient>
+    <linearGradient id="greenBall" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4ab535"/>
+      <stop offset="100%" style="stop-color:#2a8018"/>
+    </linearGradient>
+    <linearGradient id="tealAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a8a7a"/>
+      <stop offset="100%" style="stop-color:#15706a"/>
+    </linearGradient>
+    <filter id="logoShadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- Outer white border (the cutout edge) -->
+  <path d="M150 10 C150 10 65 32 44 48 C28 60 24 76 24 100 C24 150 37 210 76 256 C106 292 138 312 150 322 C162 312 194 292 224 256 C263 210 276 150 276 100 C276 76 272 60 256 48 C235 32 150 10 150 10 Z"
+        fill="white" filter="url(#logoShadow)"/>
+
+  <!-- Main shield body -->
+  <path d="M150 22 C150 22 70 42 52 56 C39 65 36 78 36 100 C36 146 48 200 83 242 C110 274 139 292 150 302 C161 292 190 274 217 242 C252 200 264 146 264 100 C264 78 261 65 248 56 C230 42 150 22 150 22 Z"
+        fill="url(#shieldBody)"/>
+
+  <!-- Green banner background -->
+  <path d="M82 58 L218 58 L218 112 L82 112 Z" fill="url(#greenBanner)"/>
+  <!-- Banner slight rounded top corners illusion -->
+  <rect x="82" y="58" width="136" height="54" rx="4" ry="4" fill="url(#greenBanner)"/>
+
+  <!-- PUFC Text - bold white -->
+  <text x="150" y="99" text-anchor="middle" font-family="Arial Black, Impact, sans-serif" font-size="38" font-weight="900" fill="white" letter-spacing="5">PUFC</text>
+
+  <!-- Green outer ring -->
+  <circle cx="150" cy="192" r="65" fill="url(#greenRing)"/>
+  <!-- White inner circle -->
+  <circle cx="150" cy="192" r="56" fill="white"/>
+  <!-- Inner green ring line -->
+  <circle cx="150" cy="192" r="56" fill="none" stroke="url(#greenRing)" stroke-width="3"/>
+  <circle cx="150" cy="192" r="52" fill="white"/>
+
+  <!-- === FOOTBALL - Three color segments === -->
+
+  <!-- ORANGE/GOLD SECTION (upper-left, largest area) -->
+  <path d="M120 162 C128 153 148 150 160 158 C168 165 170 178 166 188 C158 182 148 174 136 170 C128 167 122 164 120 162 Z" fill="url(#orangeFill)"/>
+  <path d="M108 178 C112 168 124 160 135 163 C142 166 148 173 148 180 C140 177 130 175 120 177 C114 178 109 179 108 178 Z" fill="#d49515"/>
+  <path d="M105 190 C108 182 116 176 126 176 C136 176 146 180 152 186 C147 194 138 199 128 199 C118 199 108 195 105 190 Z" fill="#c08510"/>
+  <!-- Orange hex lines -->
+  <path d="M130 160 L138 156 L146 160 L146 169 L138 173 L130 169 Z" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+  <path d="M116 178 L124 174 L132 178 L132 187 L124 191 L116 187 Z" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.9"/>
+
+  <!-- GREEN SECTION (bottom-right) -->
+  <path d="M166 196 C173 190 184 191 190 198 C196 206 195 218 190 225 C184 217 175 208 168 203 C164 200 164 198 166 196 Z" fill="url(#greenBall)"/>
+  <path d="M156 208 C162 202 172 201 179 206 C184 211 186 220 182 227 C177 222 169 217 162 215 C158 214 155 212 156 208 Z" fill="#38a022"/>
+  <path d="M148 218 C153 213 162 212 170 216 C175 220 176 228 172 234 C166 230 158 226 152 224 C149 222 147 220 148 218 Z" fill="#2d8018"/>
+  <!-- Green hex lines -->
+  <path d="M170 198 L178 194 L186 198 L186 207 L178 211 L170 207 Z" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+  <path d="M158 212 L166 208 L174 212 L174 221 L166 225 L158 221 Z" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.9"/>
+
+  <!-- WHITE SECTION (bottom-left) with hex pattern -->
+  <path d="M115 198 C120 192 130 191 137 196 C142 200 143 209 139 216 C134 211 127 206 120 204 C116 203 114 201 115 198 Z" fill="#f5f5f5"/>
+  <path d="M125 215 C130 210 139 209 146 213 C150 217 152 225 148 231 C143 227 135 223 129 221 C126 220 124 218 125 215 Z" fill="#eaeaea"/>
+  <path d="M110 207 C114 201 121 198 129 200 C135 202 140 208 139 215 C133 212 126 210 120 210 C115 211 111 210 110 207 Z" fill="#f0f0f0"/>
+  <!-- White section hex lines -->
+  <path d="M120 200 L128 196 L136 200 L136 209 L128 213 L120 209 Z" fill="none" stroke="#999" stroke-width="1"/>
+  <path d="M128 218 L136 214 L144 218 L144 227 L136 231 L128 227 Z" fill="none" stroke="#999" stroke-width="0.9"/>
+
+  <!-- TEAL ACCENT (small section visible between orange and white) -->
+  <path d="M108 192 C110 188 114 186 118 187 C122 188 125 192 124 196 C120 194 115 193 110 194 Z" fill="url(#tealAccent)" opacity="0.8"/>
+  <path d="M150 155 C152 158 154 163 155 168" fill="none" stroke="#1a8a7a" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- Dividing curves between segments -->
+  <path d="M150 155 C151 172 151 190 149 206" fill="none" stroke="#1a4e65" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M125 195 C138 200 152 200 165 196" fill="none" stroke="#1a4e65" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M134 172 C141 182 149 192 158 200" fill="none" stroke="#1a4e65" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- 2012 Year text -->
+  <text x="150" y="278" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="rgba(255,255,255,0.75)" letter-spacing="4">2012</text>
+
+</svg>

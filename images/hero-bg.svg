@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a0a2e"/>
+      <stop offset="100%" style="stop-color:#0f0a1a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bgGrad)"/>
+  <!-- Terrain contour lines - white -->
+  <path d="M0 200 Q150 180 300 210 Q450 240 600 200 Q750 160 900 190 Q1050 220 1200 180" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.2"/>
+  <path d="M0 230 Q150 210 300 240 Q450 270 600 230 Q750 190 900 220 Q1050 250 1200 210" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <path d="M0 260 Q150 240 300 270 Q450 300 600 260 Q750 220 900 250 Q1050 280 1200 240" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.8"/>
+  <!-- Terrain contour lines - gold -->
+  <path d="M0 350 Q200 320 400 360 Q600 400 800 350 Q1000 300 1200 340" fill="none" stroke="rgba(212,175,55,0.15)" stroke-width="1.2"/>
+  <path d="M0 380 Q200 350 400 390 Q600 430 800 380 Q1000 330 1200 370" fill="none" stroke="rgba(212,175,55,0.1)" stroke-width="1"/>
+  <path d="M0 410 Q200 380 400 420 Q600 460 800 410 Q1000 360 1200 400" fill="none" stroke="rgba(212,175,55,0.07)" stroke-width="0.8"/>
+  <path d="M0 440 Q200 410 400 450 Q600 490 800 440 Q1000 390 1200 430" fill="none" stroke="rgba(212,175,55,0.05)" stroke-width="0.6"/>
+  <!-- Terrain contour lines - teal -->
+  <path d="M0 520 Q180 490 360 530 Q540 570 720 520 Q900 470 1080 510 Q1140 520 1200 500" fill="none" stroke="rgba(0,210,190,0.14)" stroke-width="1.2"/>
+  <path d="M0 550 Q180 520 360 560 Q540 600 720 550 Q900 500 1080 540 Q1140 550 1200 530" fill="none" stroke="rgba(0,210,190,0.1)" stroke-width="1"/>
+  <path d="M0 580 Q180 550 360 590 Q540 630 720 580 Q900 530 1080 570 Q1140 580 1200 560" fill="none" stroke="rgba(0,210,190,0.07)" stroke-width="0.8"/>
+  <path d="M0 610 Q180 580 360 620 Q540 660 720 610 Q900 560 1080 600 Q1140 610 1200 590" fill="none" stroke="rgba(0,210,190,0.04)" stroke-width="0.6"/>
+  <!-- Additional terrain detail - white upper -->
+  <path d="M0 100 Q300 70 600 110 Q900 150 1200 100" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.8"/>
+  <path d="M0 130 Q300 100 600 140 Q900 180 1200 130" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.6"/>
+  <!-- Additional terrain detail - mixed lower -->
+  <path d="M0 680 Q250 650 500 690 Q750 730 1000 680 Q1100 660 1200 670" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.6"/>
+  <path d="M0 710 Q250 680 500 720 Q750 760 1000 710 Q1100 690 1200 700" fill="none" stroke="rgba(0,210,190,0.06)" stroke-width="0.7"/>
+  <path d="M0 740 Q250 710 500 750 Q750 790 1000 740 Q1100 720 1200 730" fill="none" stroke="rgba(212,175,55,0.05)" stroke-width="0.6"/>
+  <!-- Closed contour shapes (hilltops) -->
+  <ellipse cx="300" cy="300" rx="80" ry="30" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.8"/>
+  <ellipse cx="300" cy="300" rx="50" ry="18" fill="none" stroke="rgba(212,175,55,0.08)" stroke-width="0.6"/>
+  <ellipse cx="850" cy="500" rx="90" ry="35" fill="none" stroke="rgba(0,210,190,0.07)" stroke-width="0.8"/>
+  <ellipse cx="850" cy="500" rx="55" ry="20" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.6"/>
+  <ellipse cx="600" cy="650" rx="70" ry="25" fill="none" stroke="rgba(212,175,55,0.06)" stroke-width="0.7"/>
+</svg>
