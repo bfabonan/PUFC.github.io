@@ -12,33 +12,31 @@ window.addEventListener('scroll', () => {
 // Mobile navigation toggle
 const navToggle = document.getElementById('nav-toggle');
 const navLinks = document.getElementById('nav-links');
+const navLinksMobile = document.getElementById('nav-links-mobile');
 
 navToggle.addEventListener('click', () => {
     navToggle.classList.toggle('active');
-    navLinks.classList.toggle('open');
+    navLinksMobile.classList.toggle('open');
     navbar.classList.toggle('menu-open');
-    document.body.classList.toggle('nav-open');
 });
 
 // Close mobile nav when a link is clicked
-navLinks.querySelectorAll('a').forEach(link => {
+navLinksMobile.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
         navToggle.classList.remove('active');
-        navLinks.classList.remove('open');
+        navLinksMobile.classList.remove('open');
         navbar.classList.remove('menu-open');
-        document.body.classList.remove('nav-open');
     });
 });
 
 // Close mobile nav when clicking outside
 document.addEventListener('click', (e) => {
-    if (navLinks.classList.contains('open') && 
-        !navLinks.contains(e.target) && 
+    if (navLinksMobile.classList.contains('open') && 
+        !navLinksMobile.contains(e.target) && 
         !navToggle.contains(e.target)) {
         navToggle.classList.remove('active');
-        navLinks.classList.remove('open');
+        navLinksMobile.classList.remove('open');
         navbar.classList.remove('menu-open');
-        document.body.classList.remove('nav-open');
     }
 });
 
