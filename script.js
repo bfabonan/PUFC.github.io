@@ -11,33 +11,21 @@ window.addEventListener('scroll', () => {
 
 // Mobile navigation toggle
 const navToggle = document.getElementById('nav-toggle');
-const navLinks = document.getElementById('nav-links');
-const navLinksMobile = document.getElementById('nav-links-mobile');
+const navMenu = document.getElementById('nav-menu');
 
 navToggle.addEventListener('click', () => {
     navToggle.classList.toggle('active');
-    navLinksMobile.classList.toggle('open');
+    navMenu.classList.toggle('open');
     navbar.classList.toggle('menu-open');
 });
 
 // Close mobile nav when a link is clicked
-navLinksMobile.querySelectorAll('a').forEach(link => {
+navMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
         navToggle.classList.remove('active');
-        navLinksMobile.classList.remove('open');
+        navMenu.classList.remove('open');
         navbar.classList.remove('menu-open');
     });
-});
-
-// Close mobile nav when clicking outside
-document.addEventListener('click', (e) => {
-    if (navLinksMobile.classList.contains('open') && 
-        !navLinksMobile.contains(e.target) && 
-        !navToggle.contains(e.target)) {
-        navToggle.classList.remove('active');
-        navLinksMobile.classList.remove('open');
-        navbar.classList.remove('menu-open');
-    }
 });
 
 // Scroll animations using Intersection Observer
