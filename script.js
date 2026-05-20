@@ -9,6 +9,23 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// Mobile navigation toggle
+const navToggle = document.getElementById('nav-toggle');
+const navLinks = document.getElementById('nav-links');
+
+navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('active');
+    navLinks.classList.toggle('open');
+});
+
+// Close mobile nav when a link is clicked
+navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        navToggle.classList.remove('active');
+        navLinks.classList.remove('open');
+    });
+});
+
 // Scroll animations using Intersection Observer
 const observerOptions = {
     threshold: 0.1,
