@@ -74,11 +74,8 @@ async function loadGallery() {
         // Fallback if fetch fails (e.g., file:// protocol)
         // Keep this list in sync with gallery/albums.json
         albums = [
-            { folder: 'league-finals-2024', title: 'League Finals 2024', count: 10 },
-            { folder: 'preseason-training-2025', title: 'Preseason Training 2025', count: 10 },
-            { folder: 'cup-derby-2024', title: 'Cup Derby 2024', count: 10 },
-            { folder: 'community-day-2025', title: 'Community Day 2025', count: 10 },
-            { folder: 'away-day-triumph-2024', title: 'Away Day Triumph 2024', count: 10 }
+            { folder: 'karawat-kawat-2026', title: 'Karawat-kawat 2026', count: 10, format: 'jpg' },
+            { folder: 'play-for-peace-2026', title: 'Play for Peace 2026', count: 10, format: 'jpg' }
         ];
         renderAlbumTabs();
         renderAlbumPhotos(0);
