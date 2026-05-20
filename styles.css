@@ -46,8 +46,9 @@ ul {
     transition: background-color 0.3s ease, padding 0.3s ease;
 }
 
-.navbar.scrolled {
-    background-color: rgba(22, 12, 42, 0.95);
+.navbar.scrolled,
+.navbar.menu-open {
+    background-color: rgba(22, 12, 42, 0.98);
     padding: 1rem 0;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
 }
@@ -59,6 +60,7 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .nav-logo {
@@ -964,41 +966,35 @@ ul {
     }
 
     .nav-links {
-        position: fixed;
-        top: 60px;
+        display: none;
+        position: absolute;
+        top: 100%;
         left: 0;
         right: 0;
         width: 100%;
-        max-width: 100%;
-        height: auto;
-        max-height: 0;
         background: rgba(22, 12, 42, 0.98);
         flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
+        align-items: stretch;
         gap: 0;
         padding: 0;
-        transition: max-height 0.3s ease, padding 0.3s ease;
-        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
         z-index: 1000;
-        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        border-top: 1px solid rgba(192, 132, 252, 0.2);
     }
 
     .nav-links.open {
-        right: 0;
-        max-height: 400px;
-        padding: 1rem 0;
+        display: flex;
     }
 
     .nav-links li {
         width: 100%;
-        text-align: center;
     }
 
     .nav-links a {
         font-size: 1rem;
         display: block;
-        padding: 0.8rem 1.5rem;
+        padding: 1rem 1.5rem;
+        text-align: center;
         border-bottom: 1px solid rgba(192, 132, 252, 0.1);
     }
 

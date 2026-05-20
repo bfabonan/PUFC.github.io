@@ -16,6 +16,7 @@ const navLinks = document.getElementById('nav-links');
 navToggle.addEventListener('click', () => {
     navToggle.classList.toggle('active');
     navLinks.classList.toggle('open');
+    navbar.classList.toggle('menu-open');
     document.body.classList.toggle('nav-open');
 });
 
@@ -24,6 +25,7 @@ navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
         navToggle.classList.remove('active');
         navLinks.classList.remove('open');
+        navbar.classList.remove('menu-open');
         document.body.classList.remove('nav-open');
     });
 });
@@ -35,6 +37,7 @@ document.addEventListener('click', (e) => {
         !navToggle.contains(e.target)) {
         navToggle.classList.remove('active');
         navLinks.classList.remove('open');
+        navbar.classList.remove('menu-open');
         document.body.classList.remove('nav-open');
     }
 });
