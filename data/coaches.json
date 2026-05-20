@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Coach Name 1",
+    "role": "Head Coach",
+    "photo": "images/coaches/coach-01.jpg",
+    "bio": "Add a short introduction about this coach here. Their experience, philosophy, and what they bring to the team."
+  },
+  {
+    "name": "Coach Name 2",
+    "role": "Assistant Coach",
+    "photo": "images/coaches/coach-02.jpg",
+    "bio": "Add a short introduction about this coach here. Their background and role within the coaching staff."
+  },
+  {
+    "name": "Coach Name 3",
+    "role": "Goalkeeper Coach",
+    "photo": "images/coaches/coach-03.jpg",
+    "bio": "Add a short introduction about this coach here. Their specialization and contribution to player development."
+  },
+  {
+    "name": "Coach Name 4",
+    "role": "Fitness Coach",
+    "photo": "images/coaches/coach-04.jpg",
+    "bio": "Add a short introduction about this coach here. How they keep the squad in peak physical condition."
+  }
+]
