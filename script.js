@@ -14,10 +14,15 @@ themeButtons.forEach(btn => {
 themeButtons.forEach(btn => {
     btn.addEventListener('click', () => {
         const theme = btn.dataset.theme;
+        document.body.classList.add('theme-transitioning');
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('pufc-theme', theme);
         themeButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
+
+        setTimeout(() => {
+            document.body.classList.remove('theme-transitioning');
+        }, 600);
     });
 });
 
