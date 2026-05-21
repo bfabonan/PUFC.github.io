@@ -88,8 +88,9 @@ async function loadGallery() {
         albums = await response.json();
     } catch (error) {
         albums = [
+            { title: 'Play for Peace 2026', thumbnail: 'gallery/play-for-peace-2026/photo-01.jpg', url: 'https://www.facebook.com/PrestigeSportsandWellness/posts/pfbid029hEEdFgn2dRsKnvjTds4aYSLMYyWgmssMSJmt6F8C8zmVnaEumzwWAeyJef1B72Wl' },
             { title: 'Karawat-kawat 2026', thumbnail: 'gallery/karawat-kawat-2026/photo-01.jpg', url: 'https://www.facebook.com/PrestigeSportsandWellness/posts/pfbid02o2yTb8CJgxr36A1TkCYxGRbkgviYuEEe7rityVH1eaqi5WKgNeUCRgv6JgidKkp5l' },
-            { title: 'Play for Peace 2026', thumbnail: 'gallery/play-for-peace-2026/photo-01.jpg', url: 'https://www.facebook.com/PrestigeSportsandWellness/posts/pfbid029hEEdFgn2dRsKnvjTds4aYSLMYyWgmssMSJmt6F8C8zmVnaEumzwWAeyJef1B72Wl' }
+            { title: 'JVF Cup 2026', thumbnail: 'gallery/jvf-cup-2026/photo-01.jpg', url: 'https://www.facebook.com/PrestigeUnionFc/posts/pfbid02fnxBKfV6BQeA4jukf3C8JFE5SCD99z8WR8hgP6AXsxWu2Ew5C2TCmV1awEANqjDMl' }
         ];
     }
     renderAlbums();
