@@ -10,10 +10,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Theme Switcher -->
+    <div class="theme-switcher" id="theme-switcher">
+        <button class="theme-btn active" data-theme="deep-purple-gold" title="Deep Purple Gold">🟣</button>
+        <button class="theme-btn" data-theme="dark-purple-green" title="Dark Purple Green">🟢</button>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-bar">
-            <a href="#home" class="nav-logo">PUFC</a>
+            <a href="#home" class="nav-logo">PUFC FOOTBALL ACADEMY</a>
             <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
@@ -36,8 +42,8 @@
             <div class="logo-container animate-on-scroll">
                 <img src="images/logo.png" alt="PUFC Logo" class="club-logo">
             </div>
-            <h1 class="hero-title animate-on-scroll">Prestige Union<br>Football Club</h1>
-            <p class="hero-subtitle animate-on-scroll">Respect. Play + Share</p>
+            <h1 class="hero-title animate-on-scroll">PUFC Football<br>Academy Bicol</h1>
+            <p class="hero-subtitle animate-on-scroll">THE UNION LIVES ON IN YOU</p>
             <a href="#about" class="hero-btn animate-on-scroll">Discover More</a>
         </div>
         <div class="scroll-indicator">
@@ -53,19 +59,9 @@
                 <a href="https://www.google.com/maps/place/Holy+Rosary+Minor+Seminary/@13.6278984,123.1860999,19.25z/data=!4m6!3m5!1s0x33a18cb499d5da21:0x28cc38dd320a8932!8m2!3d13.6281231!4d123.1862808!16s%2Fm%2F010r8s_5?entry=ttu" target="_blank" rel="noopener noreferrer" class="about-card animate-on-scroll about-card-link">
                     <img src="images/stadium.svg" alt="Our Stadium" class="about-image">
                     <h3>Our Home</h3>
-                    <p>Prestige Park is where legends are made. Our state-of-the-art stadium holds 40,000 passionate fans who create an atmosphere unlike any other on matchday.</p>
+                    <p>Welcome to the HRMS Prestige Homepitch—our premier football headquarters nestled within the historic grounds of the Holy Rosary Minor Seminary, where rich heritage meets elite athletic excellence to forge our club's future champions.</p>
                     <span class="card-link-hint">📍 View on Google Maps</span>
                 </a>
-                <div class="about-card animate-on-scroll">
-                    <img src="images/trophy.svg" alt="Our History" class="about-image">
-                    <h3>Our History</h3>
-                    <p>Founded with a vision of excellence, PUFC has grown from humble beginnings into one of the most respected clubs in the league. Our trophy cabinet tells the story of decades of dedication.</p>
-                </div>
-                <div class="about-card animate-on-scroll">
-                    <img src="images/team.svg" alt="Our Team" class="about-image">
-                    <h3>Our Squad</h3>
-                    <p>A blend of experienced veterans and exciting young talent, our squad embodies the spirit of Prestige Union — relentless, skillful, and united in pursuit of glory.</p>
-                </div>
                 <div class="about-card animate-on-scroll about-card-clickable" id="coaches-card">
                     <img src="images/coaches.svg" alt="Our Coaches" class="about-image">
                     <h3>Know Your Coaches</h3>
@@ -73,9 +69,29 @@
                     <span class="card-link-hint">👆 Tap to meet the coaches</span>
                 </div>
             </div>
-            <div class="about-text animate-on-scroll">
-                <p>A local amateur sports team of football enthusiasts coming together to play football around the Metro. Eventually, we started to grow a community to play, share, & teach football to the underprivileged youth, based in Taguig City, since 2012.
-</p>
+            
+            <!-- Community Card -->
+            <div class="about-community animate-on-scroll">
+                <div class="community-image">
+                    <img src="images/community.jpg" alt="PUFC Community">
+                </div>
+                <div class="community-text">
+                    <p>Social sporting and community building are what set us apart from other local amateur teams. We make sure that we share this beautiful game to all, especially to those who are eager to play but are bound by their financial limitations. We are here to offer anyone a union of team play, friendship, and a shared vision of extending an open arm to our beneficiaries.</p>
+                </div>
+            </div>
+
+            <!-- Mission & Vision Card -->
+            <div class="about-community about-community-reverse animate-on-scroll">
+                <div class="community-text">
+                    <h3 class="mv-heading"><svg class="mv-icon" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="2" fill="currentColor"/><line x1="12" y1="2" x2="12" y2="6" stroke="currentColor" stroke-width="1.5"/><line x1="20" y1="12" x2="24" y2="12" stroke="currentColor" stroke-width="1.5"/></svg> Our Mission</h3>
+                    <p>Through our united views of playing and sharing beautiful games, we help build and develop a strong foundation for young champions to succeed, not only to score in any sports but in their personal life goals as well</p>
+                    <h3 class="mv-heading"><svg class="mv-icon" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg> Our Vision</h3>
+                    <p>"We believe that through social sporting, Prestige Union FC will be among the prime football clubs in the country to provide support and elevate the Filipino football culture."</p>
+                    <p>"To be the home of passionate football enthusiasts doing it for the love of the game while bringing sports and wellness closer to the community."</p>
+                </div>
+                <div class="community-image community-image-right">
+                    <img src="images/mission-vision.jpg" alt="PUFC Mission and Vision">
+                </div>
             </div>
         </div>
     </section>
@@ -201,7 +217,7 @@
                 </a>
 
                 <!-- Phone -->
-                <a href="tel:09985847212" class="contact-card">
+                <div class="contact-card" id="phone-card" style="cursor:pointer;">
                     <div class="contact-card-icon">
                         <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
                             <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
@@ -209,7 +225,8 @@
                     </div>
                     <h3>Contact Number</h3>
                     <p>0998 584 7212</p>
-                </a>
+                    <span class="copy-hint" id="copy-hint">Tap to copy</span>
+                </div>
 
                 <!-- Messenger -->
                 <a href="https://m.me/PrestigeUnionFc" target="_blank" rel="noopener noreferrer" class="contact-card">

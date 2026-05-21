@@ -1,3 +1,26 @@
+// =====================
+// THEME SWITCHER
+// =====================
+const themeSwitcher = document.getElementById('theme-switcher');
+const themeButtons = themeSwitcher.querySelectorAll('.theme-btn');
+
+// Load saved theme
+const savedTheme = localStorage.getItem('pufc-theme') || 'deep-purple-gold';
+document.documentElement.setAttribute('data-theme', savedTheme);
+themeButtons.forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.theme === savedTheme);
+});
+
+themeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const theme = btn.dataset.theme;
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('pufc-theme', theme);
+        themeButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    });
+});
+
 // Navbar scroll effect
 const navbar = document.getElementById('navbar');
 
@@ -262,6 +285,33 @@ coachesModal.addEventListener('click', (e) => {
         coachesModal.classList.remove('active');
         document.body.style.overflow = '';
     }
+});
+
+// =====================
+// COPY PHONE NUMBER
+// =====================
+const phoneCard = document.getElementById('phone-card');
+const copyHint = document.getElementById('copy-hint');
+
+phoneCard.addEventListener('click', () => {
+    navigator.clipboard.writeText('09985847212').then(() => {
+        copyHint.textContent = '✓ Copied!';
+        setTimeout(() => {
+            copyHint.textContent = 'Tap to copy';
+        }, 2000);
+    }).catch(() => {
+        // Fallback for older browsers
+        const temp = document.createElement('input');
+        temp.value = '09985847212';
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+        copyHint.textContent = '✓ Copied!';
+        setTimeout(() => {
+            copyHint.textContent = 'Tap to copy';
+        }, 2000);
+    });
 });
 
 // =====================
