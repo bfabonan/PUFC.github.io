@@ -88,7 +88,7 @@ async function loadGallery() {
         albums = await response.json();
     } catch (error) {
         albums = [
-            { title: 'Karawat-kawat 2026', thumbnail: 'gallery/karawat-kawat-2026/photo-03.jpg', url: 'https://www.facebook.com/PrestigeSportsandWellness/posts/pfbid02o2yTb8CJgxr36A1TkCYxGRbkgviYuEEe7rityVH1eaqi5WKgNeUCRgv6JgidKkp5l' },
+            { title: 'Karawat-kawat 2026', thumbnail: 'gallery/karawat-kawat-2026/photo-01.jpg', url: 'https://www.facebook.com/PrestigeSportsandWellness/posts/pfbid02o2yTb8CJgxr36A1TkCYxGRbkgviYuEEe7rityVH1eaqi5WKgNeUCRgv6JgidKkp5l' },
             { title: 'Play for Peace 2026', thumbnail: 'gallery/play-for-peace-2026/photo-01.jpg', url: 'https://www.facebook.com/PrestigeSportsandWellness/posts/pfbid029hEEdFgn2dRsKnvjTds4aYSLMYyWgmssMSJmt6F8C8zmVnaEumzwWAeyJef1B72Wl' }
         ];
     }
