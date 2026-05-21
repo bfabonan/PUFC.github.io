@@ -200,6 +200,7 @@ const defaultCalendar = [
     { date: '2026-03', title: 'Season Ender and Inhouse Cup', description: '', type: 'tournament' },
     { date: '2026-04', title: 'Summer Camp', description: 'Summer camp with Fiestahan - donation drive event', type: 'event' },
     { date: '2026-05', title: 'Tune up Matches and Tournaments', description: '', type: 'tournament' },
+    { date: "2026-05-29", title: "PUFC Anniversary", description: "", type: "event" },
     { date: '2026-06', title: 'Bootcamp opening', description: '', type: 'training' },
     { date: '2026-07', title: 'Prestige Cup Football Fiesta', description: '', type: 'tournament' },
     { date: '2026-08', title: 'Individual coaching with guest coaches', description: '', type: 'training' },
