@@ -195,12 +195,18 @@ coachesModal.addEventListener('click', (e) => {
 const calendarGrid = document.getElementById('calendar-grid');
 
 const defaultCalendar = [
-    { date: '2026-06-01', title: 'Bootcamp Starts', description: 'High-energy training phase begins.', type: 'training' },
-    { date: '2026-06-15', title: 'Friendly Match vs. Local FC', description: 'Pre-season friendly at home ground.', type: 'match' },
-    { date: '2026-07-05', title: 'Community Day 2026', description: 'Open training session and skills clinic.', type: 'event' },
-    { date: '2026-07-20', title: 'Inter-Club Tournament', description: 'Regional tournament participation.', type: 'tournament' },
-    { date: '2026-08-10', title: 'Fitness Assessment Day', description: 'Quarterly fitness testing for all squad members.', type: 'training' },
-    { date: '2026-09-01', title: 'League Cup Qualifiers', description: 'First round of league cup qualification matches.', type: 'tournament' }
+    { date: '2026-01', title: 'Friendly Match vs. Local FC', description: '', type: 'training' },
+    { date: '2026-02', title: 'Community Service', description: '', type: 'event' },
+    { date: '2026-03', title: 'Season Ender and Inhouse Cup', description: '', type: 'tournament' },
+    { date: '2026-04', title: 'Summer Camp', description: 'Summer camp with Fiestahan - donation drive event', type: 'event' },
+    { date: '2026-05', title: 'Tune up Matches and Tournaments', description: '', type: 'tournament' },
+    { date: '2026-06', title: 'Bootcamp opening', description: '', type: 'training' },
+    { date: '2026-07', title: 'Prestige Cup Football Fiesta', description: '', type: 'tournament' },
+    { date: '2026-08', title: 'Individual coaching with guest coaches', description: '', type: 'training' },
+    { date: '2026-09', title: 'Bootcam Ender and Football Break', description: '', type: 'event' },
+    { date: '2026-10', title: 'Opening of Team Camp', description: 'Team building, Sports touring, Scouting event', type: 'event' },
+    { date: '2026-11', title: 'Family Day and Sports Fest', description: '', type: 'tournament' },
+    { date: '2026-12', title: 'Academy season completion and culminating event', description: 'Year end party', type: 'event' }
 ];
 
 async function loadCalendar() {
@@ -212,16 +218,41 @@ async function loadCalendar() {
         events = defaultCalendar;
     }
 
-    // Sort by date
-    events.sort((a, b) => new Date(a.date) - new Date(b.date));
+    // Sort by month then day
+    const monthOrder = {
+        'january': 1, 'february': 2, 'march': 3, 'april': 4,
+        'may': 5, 'june': 6, 'july': 7, 'august': 8,
+        'september': 9, 'october': 10, 'november': 11, 'december': 12
+    };
 
-    // Filter to show only upcoming or recent events
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const upcoming = events.filter(e => new Date(e.date) >= today);
-    const display = upcoming.length > 0 ? upcoming : events.slice(-4);
+    function getSortKey(event) {
+        if (event.date && event.date.match(/^\d{4}-\d{2}-\d{2}$/)) {
+            // Full date: YYYY-MM-DD
+            const d = new Date(event.date);
+            return { year: d.getFullYear(), month: d.getMonth() + 1, day: d.getDate() };
+        } else if (event.date && event.date.match(/^\d{4}-\d{2}$/)) {
+            // Year-month: YYYY-MM
+            const parts = event.date.split('-');
+            return { year: parseInt(parts[0]), month: parseInt(parts[1]), day: 0 };
+        } else if (event.date) {
+            // Month name only
+            const lower = event.date.toLowerCase().trim();
+            const m = monthOrder[lower];
+            if (m) return { year: 9999, month: m, day: 0 };
+            return { year: 9999, month: 99, day: 0 };
+        }
+        return { year: 9999, month: 99, day: 99 };
+    }
 
-    renderCalendar(display);
+    events.sort((a, b) => {
+        const keyA = getSortKey(a);
+        const keyB = getSortKey(b);
+        if (keyA.year !== keyB.year) return keyA.year - keyB.year;
+        if (keyA.month !== keyB.month) return keyA.month - keyB.month;
+        return keyA.day - keyB.day;
+    });
+
+    renderCalendar(events);
 }
 
 function renderCalendar(events) {
@@ -232,17 +263,50 @@ function renderCalendar(events) {
         return;
     }
 
+    const monthAbbr = {
+        'january': 'Jan', 'february': 'Feb', 'march': 'Mar',
+        'april': 'Apr', 'may': 'May', 'june': 'Jun',
+        'july': 'Jul', 'august': 'Aug', 'september': 'Sep',
+        'october': 'Oct', 'november': 'Nov', 'december': 'Dec'
+    };
+
     events.forEach(event => {
-        const date = new Date(event.date);
-        const day = date.getDate();
-        const month = date.toLocaleString('en', { month: 'short' });
+        let day = '';
+        let month = '';
+
+        if (event.date && event.date.match(/^\d{4}-\d{2}-\d{2}$/)) {
+            // Full date format: YYYY-MM-DD
+            const dateObj = new Date(event.date);
+            day = dateObj.getDate();
+            month = dateObj.toLocaleString('en', { month: 'short' });
+        } else if (event.date && event.date.match(/^\d{4}-\d{2}$/)) {
+            // Year-month format: YYYY-MM
+            const parts = event.date.split('-');
+            const dateObj = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, 1);
+            day = dateObj.toLocaleString('en', { month: 'short' });
+            month = parts[0];
+        } else if (event.date) {
+            // Month name or abbreviation
+            const lower = event.date.toLowerCase().trim();
+            if (monthAbbr[lower]) {
+                day = monthAbbr[lower];
+                month = '';
+            } else {
+                // Already abbreviated or custom text
+                day = event.date;
+                month = '';
+            }
+        } else {
+            day = '—';
+            month = '';
+        }
 
         const item = document.createElement('div');
         item.className = 'calendar-item';
         item.innerHTML = `
             <div class="calendar-date">
                 <span class="calendar-date-day">${day}</span>
-                <span class="calendar-date-month">${month}</span>
+                ${month ? `<span class="calendar-date-month">${month}</span>` : ''}
             </div>
             <div class="calendar-details">
                 <span class="calendar-type calendar-type-${event.type}">${event.type}</span>

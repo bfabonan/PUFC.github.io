@@ -3,7 +3,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    max-width: 100%;
 }
 
 html, body {
@@ -739,7 +738,7 @@ ul {
 }
 
 .framework-columns-4 {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
 }
 
 @media (max-width: 768px) {
@@ -2015,7 +2014,7 @@ ul {
         gap: 1rem;
         text-align: center;
     }
-}
+
 
 /* Small phones */
 @media (max-width: 480px) {
