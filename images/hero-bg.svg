@@ -5,7 +5,7 @@
       <stop offset="100%" style="stop-color:#0f0a1a"/>
     </linearGradient>
   </defs>
-  <rect width="1200" height="800" fill="url(#bgGrad)"/>
+  <rect width="1200" height="800" fill="none"/>
   <!-- Terrain contour lines - white -->
   <path d="M0 200 Q150 180 300 210 Q450 240 600 200 Q750 160 900 190 Q1050 220 1200 180" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.2"/>
   <path d="M0 230 Q150 210 300 240 Q450 270 600 230 Q750 190 900 220 Q1050 250 1200 210" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>

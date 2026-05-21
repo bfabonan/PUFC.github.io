@@ -75,153 +75,49 @@ document.querySelectorAll('.animate-on-scroll').forEach(el => {
 // =====================
 // GALLERY SYSTEM
 // =====================
-// To add a new album:
-// 1. Create a new folder inside /gallery/ (e.g., gallery/my-new-album/)
-// 2. Add images named photo-01.svg, photo-02.svg, etc.
-// 3. Add an entry to gallery/albums.json with folder name, title, and count
-// That's it! The gallery will automatically pick it up.
+// Each album is a thumbnail that links to a Facebook album.
+// To add a new album: add an entry to gallery/albums.json with title, thumbnail, and url.
 
-const albumTabs = document.getElementById('album-tabs');
-const galleryGrid = document.getElementById('gallery-grid');
+const galleryAlbums = document.getElementById('gallery-albums');
 
 let albums = [];
-let activeAlbum = 0;
 
 async function loadGallery() {
     try {
         const response = await fetch('gallery/albums.json');
         albums = await response.json();
-        renderAlbumTabs();
-        renderAlbumPhotos(0);
     } catch (error) {
-        // Fallback if fetch fails (e.g., file:// protocol)
-        // Keep this list in sync with gallery/albums.json
         albums = [
-            { folder: 'karawat-kawat-2026', title: 'Karawat-kawat 2026', count: 10, format: 'jpg' },
-            { folder: 'play-for-peace-2026', title: 'Play for Peace 2026', count: 10, format: 'jpg' }
+            { title: 'Karawat-kawat 2026', thumbnail: 'gallery/karawat-kawat-2026/photo-03.jpg', url: 'https://www.facebook.com/PrestigeSportsandWellness/posts/pfbid02o2yTb8CJgxr36A1TkCYxGRbkgviYuEEe7rityVH1eaqi5WKgNeUCRgv6JgidKkp5l' },
+            { title: 'Play for Peace 2026', thumbnail: 'gallery/play-for-peace-2026/photo-01.jpg', url: 'https://www.facebook.com/PrestigeSportsandWellness/posts/pfbid029hEEdFgn2dRsKnvjTds4aYSLMYyWgmssMSJmt6F8C8zmVnaEumzwWAeyJef1B72Wl' }
         ];
-        renderAlbumTabs();
-        renderAlbumPhotos(0);
     }
+    renderAlbums();
 }
 
-function renderAlbumTabs() {
-    albumTabs.innerHTML = '';
+function renderAlbums() {
+    galleryAlbums.innerHTML = '';
     albums.forEach((album, index) => {
-        const tab = document.createElement('button');
-        tab.className = `album-tab ${index === 0 ? 'active' : ''}`;
-        tab.textContent = album.title;
-        tab.addEventListener('click', () => {
-            document.querySelectorAll('.album-tab').forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-            renderAlbumPhotos(index);
-        });
-        albumTabs.appendChild(tab);
+        const link = document.createElement('a');
+        link.href = album.url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.className = 'gallery-album-card';
+        link.style.animationDelay = `${index * 0.1}s`;
+
+        link.innerHTML = `
+            <div class="album-thumb">
+                <img src="${album.thumbnail}" alt="${album.title}" loading="lazy">
+            </div>
+            <div class="album-info">
+                <h3>${album.title}</h3>
+                <span class="album-link-hint">View on Facebook →</span>
+            </div>
+        `;
+
+        galleryAlbums.appendChild(link);
     });
 }
-
-function renderAlbumPhotos(albumIndex) {
-    activeAlbum = albumIndex;
-    const album = albums[albumIndex];
-    galleryGrid.innerHTML = '';
-    galleryGrid.classList.add('loading');
-
-    for (let i = 1; i <= album.count; i++) {
-        const num = String(i).padStart(2, '0');
-        const ext = album.format || 'svg';
-        const item = document.createElement('div');
-        item.className = 'gallery-item';
-        item.style.animationDelay = `${(i - 1) * 0.05}s`;
-        item.style.cursor = 'pointer';
-
-        const img = document.createElement('img');
-        img.src = `gallery/${album.folder}/photo-${num}.${ext}`;
-        img.alt = `${album.title} - Photo ${i}`;
-        img.loading = 'lazy';
-
-        const overlay = document.createElement('div');
-        overlay.className = 'gallery-item-overlay';
-        overlay.innerHTML = `<span>${album.title}</span><small>Photo ${i}</small>`;
-
-        item.appendChild(img);
-        item.appendChild(overlay);
-        galleryGrid.appendChild(item);
-
-        // Click to open lightbox
-        item.addEventListener('click', () => {
-            openLightbox(albumIndex, i - 1);
-        });
-    }
-
-    // Trigger entrance animation
-    requestAnimationFrame(() => {
-        galleryGrid.classList.remove('loading');
-    });
-}
-
-// =====================
-// LIGHTBOX
-// =====================
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const lightboxCaption = document.getElementById('lightbox-caption');
-const lightboxClose = document.getElementById('lightbox-close');
-const lightboxPrev = document.getElementById('lightbox-prev');
-const lightboxNext = document.getElementById('lightbox-next');
-
-let currentPhotoIndex = 0;
-let currentAlbumIndex = 0;
-
-function openLightbox(albumIdx, photoIdx) {
-    currentAlbumIndex = albumIdx;
-    currentPhotoIndex = photoIdx;
-    updateLightboxImage();
-    lightbox.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeLightbox() {
-    lightbox.classList.remove('active');
-    document.body.style.overflow = '';
-}
-
-function updateLightboxImage() {
-    const album = albums[currentAlbumIndex];
-    const num = String(currentPhotoIndex + 1).padStart(2, '0');
-    const ext = album.format || 'svg';
-    lightboxImg.src = `gallery/${album.folder}/photo-${num}.${ext}`;
-    lightboxImg.alt = `${album.title} - Photo ${currentPhotoIndex + 1}`;
-    lightboxCaption.textContent = `${album.title} — Photo ${currentPhotoIndex + 1} of ${album.count}`;
-}
-
-function nextPhoto() {
-    const album = albums[currentAlbumIndex];
-    currentPhotoIndex = (currentPhotoIndex + 1) % album.count;
-    updateLightboxImage();
-}
-
-function prevPhoto() {
-    const album = albums[currentAlbumIndex];
-    currentPhotoIndex = (currentPhotoIndex - 1 + album.count) % album.count;
-    updateLightboxImage();
-}
-
-lightboxClose.addEventListener('click', closeLightbox);
-lightboxNext.addEventListener('click', nextPhoto);
-lightboxPrev.addEventListener('click', prevPhoto);
-
-// Close on background click
-lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) closeLightbox();
-});
-
-// Keyboard navigation
-document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('active')) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowRight') nextPhoto();
-    if (e.key === 'ArrowLeft') prevPhoto();
-});
 
 // Initialize gallery
 loadGallery();
