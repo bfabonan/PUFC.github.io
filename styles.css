@@ -2052,27 +2052,30 @@ ul {
     }
 
     .social-card {
-        padding: 2rem 1.5rem;
-        flex-direction: row;
-        gap: 1.2rem;
-        text-align: left;
+        padding: 1.5rem;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.8rem;
     }
 
     .social-icon {
-        width: 55px;
-        height: 55px;
+        width: 50px;
+        height: 50px;
         margin-bottom: 0;
         flex-shrink: 0;
     }
 
     .social-card h3 {
-        font-size: 1.2rem;
-        margin-bottom: 0.2rem;
+        font-size: 1.1rem;
+        margin-bottom: 0.1rem;
     }
 
     .social-card p {
         margin-bottom: 0.5rem;
-        font-size: 0.8rem;
+        font-size: 0.75rem;
+        word-break: break-all;
+    }
     }
 
     /* Contact */
