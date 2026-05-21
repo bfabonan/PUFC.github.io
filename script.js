@@ -185,6 +185,73 @@ coachesModal.addEventListener('click', (e) => {
 });
 
 // =====================
+// CALENDAR OF ACTIVITIES
+// =====================
+const calendarGrid = document.getElementById('calendar-grid');
+
+const defaultCalendar = [
+    { date: '2026-06-01', title: 'Bootcamp Starts', description: 'High-energy training phase begins.', type: 'training' },
+    { date: '2026-06-15', title: 'Friendly Match vs. Local FC', description: 'Pre-season friendly at home ground.', type: 'match' },
+    { date: '2026-07-05', title: 'Community Day 2026', description: 'Open training session and skills clinic.', type: 'event' },
+    { date: '2026-07-20', title: 'Inter-Club Tournament', description: 'Regional tournament participation.', type: 'tournament' },
+    { date: '2026-08-10', title: 'Fitness Assessment Day', description: 'Quarterly fitness testing for all squad members.', type: 'training' },
+    { date: '2026-09-01', title: 'League Cup Qualifiers', description: 'First round of league cup qualification matches.', type: 'tournament' }
+];
+
+async function loadCalendar() {
+    let events;
+    try {
+        const response = await fetch('data/calendar.json');
+        events = await response.json();
+    } catch (e) {
+        events = defaultCalendar;
+    }
+
+    // Sort by date
+    events.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+    // Filter to show only upcoming or recent events
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const upcoming = events.filter(e => new Date(e.date) >= today);
+    const display = upcoming.length > 0 ? upcoming : events.slice(-4);
+
+    renderCalendar(display);
+}
+
+function renderCalendar(events) {
+    calendarGrid.innerHTML = '';
+
+    if (events.length === 0) {
+        calendarGrid.innerHTML = '<div class="calendar-empty">No upcoming events. Check back soon!</div>';
+        return;
+    }
+
+    events.forEach(event => {
+        const date = new Date(event.date);
+        const day = date.getDate();
+        const month = date.toLocaleString('en', { month: 'short' });
+
+        const item = document.createElement('div');
+        item.className = 'calendar-item';
+        item.innerHTML = `
+            <div class="calendar-date">
+                <span class="calendar-date-day">${day}</span>
+                <span class="calendar-date-month">${month}</span>
+            </div>
+            <div class="calendar-details">
+                <span class="calendar-type calendar-type-${event.type}">${event.type}</span>
+                <h3>${event.title}</h3>
+                <p>${event.description}</p>
+            </div>
+        `;
+        calendarGrid.appendChild(item);
+    });
+}
+
+loadCalendar();
+
+// =====================
 // COPY PHONE NUMBER
 // =====================
 const phoneCard = document.getElementById('phone-card');
