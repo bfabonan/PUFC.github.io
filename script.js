@@ -137,10 +137,10 @@ const coachesModalClose = document.getElementById('coaches-modal-close');
 const coachesGrid = document.getElementById('coaches-grid');
 
 const defaultCoaches = [
-    { name: 'Coach Name 1', role: 'Head Coach', photo: 'images/coaches/coach-01.jpg', bio: 'Add a short introduction about this coach here.' },
-    { name: 'Coach Name 2', role: 'Assistant Coach', photo: 'images/coaches/coach-02.jpg', bio: 'Add a short introduction about this coach here.' },
-    { name: 'Coach Name 3', role: 'Goalkeeper Coach', photo: 'images/coaches/coach-03.jpg', bio: 'Add a short introduction about this coach here.' },
-    { name: 'Coach Name 4', role: 'Fitness Coach', photo: 'images/coaches/coach-04.jpg', bio: 'Add a short introduction about this coach here.' }
+    { name: 'WILVEN "SEV" GADIAN', role: 'Head Coach', photo: 'images/coaches/coach-01.jpg', bio: 'Coach Sev is the Founder & Head of Academy (Play+Share) - PUFC from 2011 to present.', about: '<p>Coach Sev is the Founder &amp; Head of Academy (Play+Share) - PUFC from 2011 to present.</p><ul><li>Founder - SICAD BICOL Batang Malaya Champions 2014 and 2015</li><li>1st Runner up 1999 - Palarong Pambansa</li><li>City, District, and Regional Meet 1998-2000 (MES-Team Baguio City)</li><li>Community Futbol - Naga City 2004-2010</li><li>Played in the Weekend Football League, Team Army</li><li>Corporate Football League, Urban Football - 2013-2024</li><li>He has coached several community-based football and corporate teams/clubs since 2012</li></ul><p><strong>EDUCATION:</strong></p><ul><li>Mabini Elem School 2000</li><li>UNC - HS 2004 &amp; BSN 2008, BISCAST - SLP 2010</li><li>PSBA Manila - MBA 2019 &amp; UNC BSBA OM 2026</li><li>PUP Sta Mesa DBA 2026-2029</li></ul><p><strong>PLAYING EXPERIENCE:</strong></p><ul><li>Mabini Elem School 98-2000 (Baguio City Meet, CARAA, Pambansa)</li><li>FBHS - Makati - 2000-2002</li><li>Community Football 2004-2010</li><li>UFL/WFL - Team Army /Saceroo/CCF Del Monte</li><li>Yuppies, FM, Urban Football, CFL, GOlazo - PUFC 2012-Present</li></ul><p><strong>COACHING EXPERIENCE:</strong></p><ul><li>Founder &amp; Coach Sicad Bicol - 2010-2012</li><li>Invictus Football, Camaligan, Sabang FC, Coach 2014-2015</li><li>First Balfour FC - 2022-2025 / Indra Club de Futbol 2023-24</li><li>Taguig Schools - Ususan and Sta Ana Taguig ES 2022-2025</li><li>SRCC and KERIS Taguig 2019-2024, Army Summer Camp 2024</li><li>Guest Coach - Secret FC 2023</li><li>Founder &amp; Coach PUFC - 2012 to Present</li><li>Founder &amp; Head Coach PUFC Academy Bicol 2025 - Present</li><li>Founder &amp; CEO Prestige Sports &amp; Wellness 2024 - present</li></ul>' },
+    { name: 'Coach Name 2', role: 'Assistant Coach', photo: 'images/coaches/coach-02.jpg', bio: 'Add a short introduction about this coach here.', about: 'Add detailed info here.' },
+    { name: 'Coach Name 3', role: 'Goalkeeper Coach', photo: 'images/coaches/coach-03.jpg', bio: 'Add a short introduction about this coach here.', about: 'Add detailed info here.' },
+    { name: 'Coach Name 4', role: 'Fitness Coach', photo: 'images/coaches/coach-04.jpg', bio: 'Add a short introduction about this coach here.', about: 'Add detailed info here.' }
 ];
 
 async function loadCoaches() {
@@ -159,6 +159,7 @@ function renderCoaches(coaches) {
     coaches.forEach(coach => {
         const card = document.createElement('div');
         card.className = 'coach-card';
+        card.style.cursor = 'pointer';
         card.innerHTML = `
             <img src="${coach.photo}" alt="${coach.name}" class="coach-photo" onerror="this.src='images/coaches.svg'">
             <div class="coach-info">
@@ -167,7 +168,50 @@ function renderCoaches(coaches) {
                 <p class="coach-bio">${coach.bio}</p>
             </div>
         `;
+        card.addEventListener('click', () => showCoachDetail(coach));
         coachesGrid.appendChild(card);
+    });
+}
+
+function showCoachDetail(coach) {
+    // Create or reuse detail overlay
+    let detail = document.getElementById('coach-detail');
+    if (!detail) {
+        detail = document.createElement('div');
+        detail.id = 'coach-detail';
+        detail.className = 'coach-detail-overlay';
+        document.body.appendChild(detail);
+    }
+
+    detail.innerHTML = `
+        <div class="coach-detail-content">
+            <button class="coach-detail-close">&times;</button>
+            <div class="coach-detail-header">
+                <img src="${coach.photo}" alt="${coach.name}" class="coach-detail-photo" onerror="this.src='images/coaches.svg'">
+                <div class="coach-detail-title">
+                    <h2>${coach.name}</h2>
+                    <p class="coach-role">${coach.role}</p>
+                </div>
+            </div>
+            <div class="coach-detail-body">
+                ${coach.about || coach.bio}
+            </div>
+        </div>
+    `;
+
+    detail.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    // Close handlers
+    detail.querySelector('.coach-detail-close').addEventListener('click', () => {
+        detail.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+    detail.addEventListener('click', (e) => {
+        if (e.target === detail) {
+            detail.classList.remove('active');
+            document.body.style.overflow = '';
+        }
     });
 }
 
@@ -363,3 +407,50 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// =====================
+// INQUIRY FORM (Web3Forms)
+// =====================
+const inquiryForm = document.getElementById('inquiry-form');
+const inquirySuccess = document.getElementById('inquiry-success');
+
+if (inquiryForm) {
+    inquiryForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const btn = inquiryForm.querySelector('.inquiry-submit-btn');
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+
+        const formData = new FormData(inquiryForm);
+
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                inquiryForm.style.display = 'none';
+                inquirySuccess.classList.add('show');
+                inquiryForm.reset();
+
+                // Reset after 5 seconds so user can send another
+                setTimeout(() => {
+                    inquiryForm.style.display = '';
+                    inquirySuccess.classList.remove('show');
+                    btn.textContent = 'Send Message';
+                    btn.disabled = false;
+                }, 5000);
+            } else {
+                btn.textContent = 'Failed - Try Again';
+                btn.disabled = false;
+            }
+        } catch (error) {
+            btn.textContent = 'Failed - Try Again';
+            btn.disabled = false;
+        }
+    });
+}
